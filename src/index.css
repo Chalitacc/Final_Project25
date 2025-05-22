@@ -2,6 +2,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: QuickSand;
+}
+
+@font-face {
+  font-family: QuikSand;
+  src: url("/public/fonts/Quicksand-VariableFont_wght.ttf");
 }
 
 :root {
@@ -24,4 +30,8 @@
   --spacing-medium: 2rem;
   --spacing-large: 3rem;
   --spacing-xl: 5rem;
+
+  /* Color */
+  --background-color-one: #fff9f4;
+  --content-color: #a9746e;
 }

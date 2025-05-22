@@ -1,0 +1,21 @@
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  background-color: #fff9f4;
+  text-align: center;
+}
+
+.heroContent {
+  display: flex;
+  max-width: 600px;
+  min-height: 400px;
+  justify-content: center;
+  align-items: center;
+  background-color: #a9746e;
+  flex-direction: column;
+  border-radius: var(--border-radius-medium);
+  color: #333333;
+}
