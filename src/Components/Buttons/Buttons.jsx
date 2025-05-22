@@ -1,5 +1,5 @@
 import React from "react";
-import Buttons from "./Button.module.css";
+import styles from "./Buttons.module.css";
 
 const Buttons = ({
   children = "Click",

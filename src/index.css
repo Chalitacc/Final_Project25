@@ -10,6 +10,10 @@
   src: url("/public/fonts/Quicksand-VariableFont_wght.ttf");
 }
 
+button {
+  cursor: pointer;
+}
+
 :root {
   /* fonts */
   --font-size-small: 0.5rem;
@@ -34,4 +38,6 @@
   /* Color */
   --background-color-one: #fff9f4;
   --content-color: #a9746e;
+  --buttomColor: #7d977d;
+  --error-color: #ff0000;
 }

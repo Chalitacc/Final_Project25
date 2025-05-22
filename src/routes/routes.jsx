@@ -11,7 +11,7 @@ import BookMainPage from "../pages/BookMainPage/BookMainPage.jsx";
 import BookDetails from "../pages/BookDetails/BookDetails.jsx";
 import BookReadList from "../pages/BookReadList/BookReadList.jsx";
 import SignIn from "../pages/SignIn/SignIn.jsx";
-import SignOut from "../pages/SignOut/SignOut.jsx";
+import SignUp from "../pages/SignUp/SignUp.jsx";
 import Profile from "../pages/Profile/Profile.jsx";
 import Contact from "../pages/Contact/Contact.jsx";
 import VerifyEmail from "../pages/VerifyEmail/VerifyEmail.jsx";
@@ -32,7 +32,7 @@ export const router = createBrowserRouter(
       ></Route>
       <Route path="/read-list" element={<BookReadList></BookReadList>}></Route>
       <Route path="/sign-in" element={<SignIn></SignIn>}></Route>
-      <Route path="/sign-out" element={<SignOut></SignOut>}></Route>
+      <Route path="/sign-up" element={<SignUp></SignUp>}></Route>
       <Route path="/profile" element={<Profile></Profile>}></Route>
       <Route path="/contact" element={<Contact></Contact>}></Route>
       <Route path="/verify-email" element={<VerifyEmail></VerifyEmail>}></Route>
