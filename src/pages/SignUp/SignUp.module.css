@@ -25,6 +25,8 @@
 .formGroup {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: var(--spacing-x-small);
   padding: var(--spacing-small);
 }
@@ -34,7 +36,7 @@
 }
 
 .formInput {
-  width: 100%;
+  width: 80%;
   height: 30px;
   padding-left: var(--spacing-x-small);
   border-radius: var(--border-radius-small);
@@ -51,9 +53,13 @@
 }
 
 .createAccountButton:hover {
-  background-color: #ff8c8c;
+  background-color: var(--hover-color);
 }
 
 .errorMessage {
   color: white;
+}
+
+label {
+  font-weight: bold;
 }

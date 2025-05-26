@@ -1,0 +1,31 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: var(--background-color-one);
+}
+
+.verifyContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--content-color);
+  width: 100%;
+  max-width: 800px;
+  gap: var(--spacing-medium);
+  padding: var(--spacing-large);
+  border-radius: var(--border-radius-medium);
+}
+
+.resendButton {
+  height: 35px;
+  border-radius: var(--border-radius-x-small);
+  border-color: black;
+  background-color: #7d977d;
+  font-weight: bold;
+  font-size: medium;
+}
+
+.resendButton:hover {
+  background-color: var(--hover-color);
+}

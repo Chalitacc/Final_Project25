@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import styles from "./SignUp.module.css";
 import Buttons from "../../Components/Buttons/Buttons";
 import { useSignUpValidation } from "../../hooks/useSignUpValidation";
+import { useAuth } from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+import { serverTimestamp, setDoc, doc } from "firebase/firestore";
+import { database } from "../../../firebaseConfig";
 
 const SignUp = () => {
   const [signUpFormData, setSignUpFormData] = useState({
@@ -15,29 +19,53 @@ const SignUp = () => {
   });
 
   const { validate, errors } = useSignUpValidation();
+  const { signUp, signUpError, user } = useAuth();
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setSignUpFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validate(signUpFormData)) {
       console.log("Form is not valid!");
       return;
     }
-    // reset
-    // setSignUpFormData({
-    //   firstname: "",
-    //   lastname: "",
-    //   email: "",
-    //   password: "",
-    //   confirmPassword: "",
-    //   dateOfBirth: "",
-    //   profilePicture: "" || null,
-    //   previewUrl: "",
-    // });
+    try {
+      const userCredential = await signUp(
+        signUpFormData.email,
+        signUpFormData.password
+      );
+      const user = userCredential.user;
+      console.log("user create success", userCredential.user);
+
+      await setDoc(doc(database, "users", user.uid), {
+        uid: user.uid,
+        firstname: signUpFormData.firstname,
+        lastname: signUpFormData.lastname,
+        dateOfBirth: signUpFormData.dateOfBirth || "",
+        favoriteBook: signUpFormData.favoriteBook,
+        email: user.email,
+        createdAt: serverTimestamp(),
+      });
+
+      navigate("/verify-email");
+      console.log("user added to database");
+
+      setSignUpFormData({
+        firstname: "",
+        lastname: "",
+        dateOfBirth: "",
+        email: "",
+        favoriteBook: "",
+        password: "",
+        confirmPassword: "",
+      });
+    } catch (error) {
+      console.log("error signing up", error);
+    }
   };
   // remember add value to the input fields
   return (
@@ -115,16 +143,15 @@ const SignUp = () => {
             id="password"
             name="password"
             className={styles.formInput}
-            maxLength={50}
             value={signUpFormData.password}
             onChange={handleInputChange}
             placeholder="Please enter a password"
           />
           {errors && <p className={styles.errorMessage}>{errors.password}</p>}
 
-          <label htmlFor="confirmPassword">Password</label>
+          <label htmlFor="confirmPassword">Confirm Password</label>
           <input
-            type="confirmPassword"
+            type="password"
             id="confirmPassword"
             name="confirmPassword"
             placeholder="Re-enter password"

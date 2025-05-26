@@ -24,7 +24,7 @@ export const useSignUpValidation = () => {
 
     if (!values.password.trim()) {
       newErrors.password = "Password is required!";
-    } else if (!values.password.trim().length < 8) {
+    } else if (values.password.trim().length < 8) {
       newErrors.password = "Password must be minimum 8 charachteres";
     } else if (!passwordRegex.test(values.password)) {
       newErrors.password =
