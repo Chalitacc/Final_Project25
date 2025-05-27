@@ -4,7 +4,7 @@
   justify-content: center;
   height: 100vh;
   text-align: center;
-  background-color: #fff9f4;
+  background-color: var(--background-color-one);
   text-align: center;
 }
 

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Navbar.module.css";
 import Buttons from "../Buttons/Buttons";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { auth } from "../../../firebaseConfig";
 import { getAuthContext } from "../../context/authContext";
 import { signOut } from "firebase/auth";
@@ -27,10 +27,19 @@ const Navbar = () => {
         <div className={styles.title}>
           <h1>Shelfie</h1>
         </div>
-        <div className={styles.signInButton}>
+        <div className={styles.firstRow}>
           {user ? (
             <>
-              <Buttons onClick={handleSignOut}>Sign Out</Buttons>
+              <form className={styles.searchForm}>
+                <input
+                  type="text"
+                  placeholder="Search books.."
+                  className={styles.searchInput}
+                />
+              </form>
+              <Buttons onClick={handleSignOut} className={styles.signInButton}>
+                Sign Out
+              </Buttons>
               <Link to="profile" className={styles.profileButton}>
                 {" "}
                 <FontAwesomeIcon
@@ -40,8 +49,15 @@ const Navbar = () => {
               </Link>
             </>
           ) : (
-            <Link>Sing In</Link>
+            <Link className={styles.signInLink} to="/sign-in">
+              Sing In
+            </Link>
           )}
+        </div>
+        <div>
+          <NavLink to="/contact" className={styles.contactLink}>
+            Contact
+          </NavLink>
         </div>
       </div>
     </nav>

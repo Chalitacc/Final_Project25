@@ -2,4 +2,60 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  background-color: var(--content-color);
+  padding: var(--spacing-small) var(--spacing-medium);
+}
+
+.firstRow {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-small);
+}
+
+.signInButton,
+.signInLink {
+  width: 70px;
+  height: 35px;
+  border: 1px solid black;
+  background-color: var(--buttomColor);
+  border-radius: var(--border-radius-x-small);
+}
+.signInLink {
+  text-decoration: none;
+  text-align: center;
+  color: black;
+  padding-top: 0.3rem;
+}
+
+.signInButton:hover,
+.signInLink:hover {
+  background-color: var(--hover-color);
+}
+
+.profileIcon {
+  font-size: var(--font-size-large);
+  color: var(--background-color-one);
+}
+.profileIcon:hover {
+  opacity: 0.5;
+}
+
+.searchInput {
+  height: 25px;
+  padding-left: var(--spacing-x-small);
+  border-radius: var(--border-radius-x-small);
+}
+
+.contactLink {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 var(--spacing-small);
+  padding-top: var(--spacing-x-small);
+  text-decoration: none;
+  color: black;
+}
+
+.title {
+  font-size: var(--font-size-medium);
+  font-style: italic;
 }
