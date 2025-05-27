@@ -5,6 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../../firebaseConfig";
 import { getAuthContext } from "../../context/authContext";
 import { signOut } from "firebase/auth";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
   const { user } = getAuthContext();
@@ -13,7 +15,7 @@ const Navbar = () => {
   const handleSignOut = async () => {
     try {
       await signOut(auth);
-      navigate("/sing-in");
+      navigate("/sign-in");
       console.log("user signed out");
     } catch (error) {
       console.log(error.message);
@@ -27,7 +29,16 @@ const Navbar = () => {
         </div>
         <div className={styles.signInButton}>
           {user ? (
-            <Buttons onClick={handleSignOut}>Sign Out</Buttons>
+            <>
+              <Buttons onClick={handleSignOut}>Sign Out</Buttons>
+              <Link to="profile" className={styles.profileButton}>
+                {" "}
+                <FontAwesomeIcon
+                  icon={faUser}
+                  className={styles.profileIcon}
+                ></FontAwesomeIcon>
+              </Link>
+            </>
           ) : (
             <Link>Sing In</Link>
           )}
