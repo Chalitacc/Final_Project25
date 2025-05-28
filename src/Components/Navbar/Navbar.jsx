@@ -37,6 +37,7 @@ const Navbar = () => {
                   className={styles.searchInput}
                 />
               </form>
+              <div></div>
               <Buttons onClick={handleSignOut} className={styles.signInButton}>
                 Sign Out
               </Buttons>

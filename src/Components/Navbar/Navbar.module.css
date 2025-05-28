@@ -4,6 +4,8 @@
   flex-direction: column;
   background-color: var(--content-color);
   padding: var(--spacing-small) var(--spacing-medium);
+  border-bottom-left-radius: var(--border-radius-x-small);
+  border-bottom-right-radius: var(--border-radius-x-small);
 }
 
 .firstRow {
@@ -41,9 +43,11 @@
 }
 
 .searchInput {
-  height: 25px;
+  height: 30px;
+  width: 200px;
   padding-left: var(--spacing-x-small);
   border-radius: var(--border-radius-x-small);
+  margin-right: var(--spacing-medium);
 }
 
 .contactLink {

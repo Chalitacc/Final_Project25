@@ -1,0 +1,63 @@
+.wrapper {
+  min-width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background-color-one);
+}
+
+.profileContainer {
+  background-color: var(--content-color);
+  min-width: 600px;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  max-width: 800px;
+  display: flex;
+  padding: var(--spacing-medium) var(--spacing-medium);
+}
+
+.profileDetailsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-medium);
+  background-color: var(--background-color-one);
+  padding: var(--spacing-medium) var(--spacing-xl);
+}
+
+.formWrapper {
+  display: flex;
+  gap: var(--spacing-small);
+  flex-direction: column;
+  min-width: 300px;
+  padding: var(--spacing-small) var(--spacing-small);
+}
+
+.bookGoalContainer {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.title {
+  text-align: center;
+}
+.profileIcon {
+  font-size: var(--font-size-large);
+}
+
+.editButton {
+  height: 25px;
+  background-color: var(--buttomColor);
+  border-radius: var(--border-radius-small);
+}
+
+.editButton:hover {
+  background-color: var(--hover-color);
+}
+.bookGoalInput {
+  border-radius: var(--border-radius-small);
+  width: 60px;
+  padding-left: 0.1rem;
+}
