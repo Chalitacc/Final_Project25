@@ -59,6 +59,7 @@ const Navbar = () => {
           <NavLink to="/contact" className={styles.contactLink}>
             Contact
           </NavLink>
+          <NavLink to="/book-main-page">Home</NavLink>
         </div>
       </div>
     </nav>
