@@ -7,6 +7,7 @@ import { getAuthContext } from "../../context/authContext";
 import { signOut } from "firebase/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
+import SearchBar from "../SearchBar/SearchBar";
 
 const Navbar = () => {
   const { user } = getAuthContext();
@@ -30,24 +31,22 @@ const Navbar = () => {
         <div className={styles.firstRow}>
           {user ? (
             <>
-              <form className={styles.searchForm}>
-                <input
-                  type="text"
-                  placeholder="Search books.."
-                  className={styles.searchInput}
-                />
-              </form>
-              <div></div>
-              <Buttons onClick={handleSignOut} className={styles.signInButton}>
-                Sign Out
-              </Buttons>
-              <Link to="profile" className={styles.profileButton}>
-                {" "}
-                <FontAwesomeIcon
-                  icon={faUser}
-                  className={styles.profileIcon}
-                ></FontAwesomeIcon>
-              </Link>
+              <SearchBar></SearchBar>
+              <div className={styles.ButtonLinkGroup}>
+                <Buttons
+                  onClick={handleSignOut}
+                  className={styles.signInButton}
+                >
+                  Sign Out
+                </Buttons>
+                <Link to="profile" className={styles.profileButton}>
+                  {" "}
+                  <FontAwesomeIcon
+                    icon={faUser}
+                    className={styles.profileIcon}
+                  ></FontAwesomeIcon>
+                </Link>
+              </div>
             </>
           ) : (
             <Link className={styles.signInLink} to="/sign-in">

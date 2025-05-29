@@ -26,10 +26,7 @@ export const router = createBrowserRouter(
         element={<BookMainPage></BookMainPage>}
       ></Route>
       {/* sjekk om dette er riktig for search */}
-      <Route
-        path="/book-main-page/:id"
-        element={<BookDetails></BookDetails>}
-      ></Route>
+      <Route path="/book/:bookId" element={<BookDetails></BookDetails>}></Route>
       <Route path="/read-list" element={<BookReadList></BookReadList>}></Route>
       <Route path="/sign-in" element={<SignIn></SignIn>}></Route>
       <Route path="/sign-up" element={<SignUp></SignUp>}></Route>

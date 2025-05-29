@@ -1,0 +1,52 @@
+.searchWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  border-radius: var(--border-radius-x-small);
+}
+
+.searchInput {
+  height: 30px;
+  width: 200px;
+  padding-left: var(--spacing-x-small);
+  border-radius: var(--border-radius-x-small);
+  margin-right: var(--spacing-medium);
+}
+
+.loadingText {
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--buttomColor);
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 100;
+}
+
+.dropDownItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropDownItem:hover {
+  background-color: #f0f0f0;
+  border-radius: var(--border-radius-x-small);
+}
+
+.bookImage {
+  width: 40px;
+  height: auto;
+  object-fit: contain;
+}

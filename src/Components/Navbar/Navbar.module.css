@@ -14,6 +14,11 @@
   gap: var(--spacing-small);
 }
 
+.ButtonLinkGroup {
+  display: flex;
+  gap: var(--spacing-large);
+}
+
 .signInButton,
 .signInLink {
   width: 70px;
