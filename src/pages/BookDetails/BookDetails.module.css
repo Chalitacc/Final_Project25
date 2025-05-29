@@ -1,0 +1,34 @@
+.bookDetailsWrapper {
+  width: 100%;
+  height: 100vh;
+
+  padding: var(--spacing-small) var(--spacing-medium);
+}
+
+.bookDetailsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-medium);
+  width: 100%;
+  padding-bottom: var(--spacing-small);
+}
+
+.bookImage {
+  width: 180px;
+  height: auto;
+  max-height: 300px;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+.addButton {
+  height: 30px;
+  width: 150px;
+  background-color: var(--buttomColor);
+  border-radius: var(--border-radius-medium);
+}
+
+.addButton:hover {
+  background-color: var(--hover-color);
+}

@@ -37,27 +37,6 @@ const SearchBar = () => {
     navigate(`/book/${bookId}`);
   };
 
-  //   const handleChange = async (e) => {
-  //     const value = e.target.value;
-  //     setQuery(value);
-
-  //     if (value.length < 3) {
-  //       setResults([]);
-  //       return;
-  //     }
-
-  //     setLoading(true);
-  //     const books = await fetchBooks(value);
-  //     setResults(books);
-  //     setLoading(false);
-  //   };
-
-  //   const handleSelectedBook = (bookId) => {
-  //     setQuery("");
-  //     setResults([]);
-  //     navigate(`/book/${bookId}`);
-  //   };
-
   return (
     <div className={styles.searchWrapper}>
       <input
