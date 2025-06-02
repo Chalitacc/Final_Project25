@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getAuthContext } from "../../context/authContext";
-import { doc, getDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
 import { auth, database } from "../../../firebaseConfig";
 import styles from "./Profile.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,15 +9,23 @@ import Buttons from "../../Components/Buttons/Buttons";
 
 const Profile = () => {
   const [userData, setUserData] = useState(null);
+
   const { user } = getAuthContext();
+  const [totalReadBooks, setTotalReadBooks] = useState("");
+  const [bookGoal, setBookGoal] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
+    if (!user) return;
     const fetchUserData = async () => {
       try {
         const userDocRef = doc(database, "users", user.uid);
         const userDoc = await getDoc(userDocRef);
         if (userDoc.exists()) {
-          setUserData(userDoc.data());
+          const data = userDoc.data();
+          setUserData(data);
+          setBookGoal(data.bookGoal || "");
+          // setUserData(userDoc.data());
         } else {
           console.log("user not found");
         }
@@ -27,6 +35,40 @@ const Profile = () => {
     };
     fetchUserData();
   }, [user]);
+
+  useEffect(() => {
+    if (!user) return;
+    const fetchReadBooks = async () => {
+      try {
+        const readBooksSnapShot = await getDocs(
+          collection(database, "users", user.uid, "readBooks")
+        );
+        setTotalReadBooks(readBooksSnapShot.size);
+      } catch (error) {
+        console.log("failed fetching read books", error);
+      }
+    };
+    fetchReadBooks();
+  }, [user]);
+
+  const handleBookGoalChange = (e) => {
+    setBookGoal(e.target.value);
+  };
+
+  const handleSaveBookGoal = async () => {
+    if (!user) return;
+    try {
+      const userRef = doc(database, "users", user.uid);
+      await setDoc(userRef, { ...userData, bookGoal }, { merge: true });
+      setIsEditing(false);
+    } catch (error) {
+      console.log("error saving book goal", error);
+    }
+  };
+
+  if (!user) {
+    return <p>Loading user profile...</p>;
+  }
 
   return (
     <div className={styles.wrapper}>
@@ -58,34 +100,53 @@ const Profile = () => {
           </p>
           <p>
             <strong>Last sign in: </strong>{" "}
-            {auth.currentUser.metadata.lastLoginAt
+            {auth.currentUser?.metadata?.lastLoginAt
               ? new Date(
                   Number(auth.currentUser.metadata.lastLoginAt)
                 ).toLocaleString()
               : "N/A"}
           </p>
-          {/* to be fixed */}
 
-          <form>
+          <form onSubmit={(e) => e.preventDefault()}>
             <fieldset className={styles.formWrapper}>
               <legend>Personal Goal</legend>
               <p>
                 <strong>Favorite Book: </strong> {userData?.favoriteBook}
               </p>
+              <p>
+                <strong>Books read: </strong> {totalReadBooks}
+              </p>
               <div className={styles.bookGoalContainer}>
                 <label htmlFor="bookGoal">Book goal:</label>
-                <input
-                  type="number"
-                  id="bookGoal"
-                  name="bookGoal"
-                  className={styles.bookGoalInput}
-                />
-              </div>
 
-              <p>
-                <strong>Books read: </strong>
-              </p>
-              <Buttons className={styles.editButton}>Edit</Buttons>
+                {isEditing ? (
+                  <input
+                    type="number"
+                    id="bookGoal"
+                    name="bookGoal"
+                    value={bookGoal}
+                    onChange={handleBookGoalChange}
+                    className={styles.bookGoalInput}
+                  />
+                ) : (
+                  <span>{bookGoal || "No goal set"} </span>
+                )}
+              </div>
+              {isEditing ? (
+                <Buttons
+                  className={styles.editButton}
+                  onClick={handleSaveBookGoal}
+                >
+                  Save Goal
+                </Buttons>
+              ) : (
+                <Buttons
+                  className={styles.editButton}
+                  onClick={() => setIsEditing(true)}
+                >
+                  Edit Goal
+                </Buttons>
+              )}
             </fieldset>
           </form>
         </div>

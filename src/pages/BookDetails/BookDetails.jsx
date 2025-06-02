@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./BookDetails.module.css";
 import { useParams } from "react-router-dom";
 import { getAuthContext } from "../../context/authContext";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import { database } from "../../../firebaseConfig";
 import Buttons from "../../Components/Buttons/Buttons";
 import DOMPurify from "dompurify";
@@ -11,6 +11,9 @@ const BookDetails = () => {
   const { bookId } = useParams();
   const [book, setBook] = useState(null);
   const [bookAdded, setBookAdded] = useState(false);
+
+  const [isCurrentlyReading, setIsCurrentlyReading] = useState(false);
+  const [isRead, setIsRead] = useState(false);
   const { user } = getAuthContext();
 
   useEffect(() => {
@@ -51,6 +54,27 @@ const BookDetails = () => {
     }
   };
 
+  useEffect(() => {
+    const checkBookStatus = async () => {
+      if (!user) return;
+      const readingRef = doc(
+        database,
+        "users",
+        user.uid,
+        "currentlyReading",
+        bookId
+      );
+      const readRef = doc(database, "users", user.uid, "readBooks", bookId);
+
+      const readingDoc = await getDoc(readingRef);
+      const readDoc = await getDoc(readRef);
+
+      setIsCurrentlyReading(readingDoc.exists());
+      setIsRead(readDoc.exists());
+    };
+    checkBookStatus();
+  }, [user, bookId]);
+
   if (!book) {
     return <p className={styles.loading}>Loading book details...</p>;
   }
@@ -68,13 +92,25 @@ const BookDetails = () => {
           {book.volumeInfo.authors?.join(",")}
         </p>
         {user && (
-          <Buttons
-            className={styles.addButton}
-            onClick={handleAddToReading}
-            disabled={bookAdded}
-          >
-            {bookAdded ? "Added!" : "Add to currently reading"}
-          </Buttons>
+          <>
+            {isRead ? (
+              <Buttons className={styles.addButton} disabled>
+                Already read
+              </Buttons>
+            ) : isCurrentlyReading ? (
+              <Buttons className={styles.addButton} disabled>
+                Currently Reading
+              </Buttons>
+            ) : (
+              <Buttons
+                className={styles.addButton}
+                onClick={handleAddToReading}
+                disabled={bookAdded}
+              >
+                {bookAdded ? "Added!" : "Add to currently reading"}
+              </Buttons>
+            )}
+          </>
         )}
         <p
           dangerouslySetInnerHTML={{
