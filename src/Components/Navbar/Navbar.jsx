@@ -54,11 +54,17 @@ const Navbar = () => {
             </Link>
           )}
         </div>
-        <div>
-          <NavLink to="/contact" className={styles.contactLink}>
+        <div className={styles.secondRow}>
+          {user ? (
+            <NavLink to="/book-main-page" className={styles.navLink}>
+              Home
+            </NavLink>
+          ) : (
+            ""
+          )}
+          <NavLink to="/contact" className={styles.navLink}>
             Contact
           </NavLink>
-          <NavLink to="/book-main-page">Home</NavLink>
         </div>
       </div>
     </nav>
