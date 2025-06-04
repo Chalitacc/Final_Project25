@@ -49,25 +49,27 @@ const SearchBar = () => {
       {loading && <p className={styles.loadingMessage}>Loading....</p>}
       {results.length > 0 && (
         <ul>
-          {results.map((book) => (
-            <li
-              key={book.id}
-              className={styles.dropDownItem}
-              onClick={() => handleSelectedBooks(book.id)}
-            >
-              <img
-                src={
-                  book.volumeInfo.imageLinks?.thumbnail || "/placeholder.jpg"
-                }
-                alt={book.volumeInfo.title}
-                className={styles.bookImage}
-              />
-              <div className={styles.bookInfo}>
-                <strong>{book.volumeInfo.title}</strong>
-                <p>{book.volumeInfo.authors?.join(",")}</p>
-              </div>
-            </li>
-          ))}
+          <div className={styles.searchBarResults}>
+            {results.map((book) => (
+              <li
+                key={book.id}
+                className={styles.dropDownItem}
+                onClick={() => handleSelectedBooks(book.id)}
+              >
+                <img
+                  src={
+                    book.volumeInfo.imageLinks?.thumbnail || "/placeholder.jpg"
+                  }
+                  alt={book.volumeInfo.title}
+                  className={styles.bookImage}
+                />
+                <div className={styles.bookInfo}>
+                  <strong>{book.volumeInfo.title}</strong>
+                  <p>{book.volumeInfo.authors?.join(",")}</p>
+                </div>
+              </li>
+            ))}
+          </div>
         </ul>
       )}
     </div>

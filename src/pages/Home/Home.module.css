@@ -6,6 +6,7 @@
   text-align: center;
   background-color: var(--background-color-one);
   text-align: center;
+  padding: var(--spacing-small);
 }
 
 .heroContent {

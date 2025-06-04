@@ -156,6 +156,7 @@ const Contact = () => {
           <Buttons className={styles.submitButton}>Send Message</Buttons>
         </div>
       </form>
+
       {contactModal && (
         <Modal>
           <div className={styles.contactModalContainer}>

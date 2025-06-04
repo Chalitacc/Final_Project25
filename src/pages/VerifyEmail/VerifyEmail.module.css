@@ -21,7 +21,7 @@
   height: 35px;
   border-radius: var(--border-radius-x-small);
   border-color: black;
-  background-color: #7d977d;
+  background-color: var(--buttomColor);
   font-weight: bold;
   font-size: medium;
 }

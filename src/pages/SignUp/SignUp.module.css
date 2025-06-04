@@ -5,6 +5,7 @@
   justify-content: center;
   align-items: center;
   background-color: var(--background-color-one);
+  padding: var(--spacing-small);
 }
 
 .formHeader {
@@ -57,9 +58,22 @@
 }
 
 .errorMessage {
-  color: white;
+  color: var(--error-color);
 }
 
 label {
   font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .signUpForm {
+    width: 80%;
+    padding: var(--spacing-small);
+  }
+  .formInput {
+    height: 28px;
+  }
+  .createAccountButton {
+    font-size: 0.9rem;
+  }
 }

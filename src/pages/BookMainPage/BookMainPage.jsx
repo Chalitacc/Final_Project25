@@ -63,22 +63,26 @@ const BookMainPage = () => {
       <section className={styles.currentlyReadingSection}>
         <h2>Currently reading 📖</h2>
         <div className={styles.bookList}>
-          {currentlyReading.map((book) => (
-            <div
-              key={book.id}
-              className={styles.bookCard}
-              onClick={() => navigate(`/book/${book.id}`)}
-            >
-              <img src={book.image} alt={book.title} />
-              <p>{book.title}</p>
-              <Buttons
-                className={styles.readButton}
-                onClick={() => handleReadBooks(book)}
+          {currentlyReading.length === 0 ? (
+            <p>Search a book and add it to your currently reads 📖</p>
+          ) : (
+            currentlyReading.map((book) => (
+              <div
+                key={book.id}
+                className={styles.bookCard}
+                onClick={() => navigate(`/book/${book.id}`)}
               >
-                Mark as Read
-              </Buttons>
-            </div>
-          ))}
+                <img src={book.image} alt={book.title} />
+                <p>{book.title}</p>
+                <Buttons
+                  className={styles.readButton}
+                  onClick={() => handleReadBooks(book)}
+                >
+                  Mark as Read
+                </Buttons>
+              </div>
+            ))
+          )}
         </div>
       </section>
 

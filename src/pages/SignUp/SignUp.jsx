@@ -67,7 +67,7 @@ const SignUp = () => {
       console.log("error signing up", error);
     }
   };
-  // remember add value to the input fields
+
   return (
     <div className={styles.formWrapper}>
       <form className={styles.signUpForm} noValidate onSubmit={handleSubmit}>

@@ -5,6 +5,17 @@
   border-radius: var(--border-radius-x-small);
 }
 
+.searchBarResults {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background-color: white;
+  border: 1px solid black;
+  max-height: 300px;
+  overflow-y: auto;
+}
 .searchInput {
   height: 30px;
   width: 200px;
@@ -41,7 +52,7 @@
 }
 
 .dropDownItem:hover {
-  background-color: #f0f0f0;
+  background-color: var(--background-color-one);
   border-radius: var(--border-radius-x-small);
 }
 

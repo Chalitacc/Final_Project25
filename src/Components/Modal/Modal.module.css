@@ -9,11 +9,10 @@
   justify-content: center;
   align-items: center;
   z-index: 999;
+  overflow: auto;
 }
 
 .modalContainer {
-  min-width: 600px;
-  max-width: 800px;
   background-color: var(--content-color);
   display: flex;
   flex-direction: column;

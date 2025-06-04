@@ -98,3 +98,24 @@
 .closeButton:hover {
   background-color: var(--hover-color);
 }
+
+.errorMessage {
+  color: var(--error-color);
+}
+
+@media (max-width: 768px) {
+  .signInForm {
+    padding: var(--spacing-small);
+    width: 80%;
+  }
+  .formHeader {
+    font-size: var(--font-size-medium);
+  }
+  .resetFormInput {
+    max-width: 100%;
+  }
+
+  .formGroup {
+    padding: var(--spacing-small);
+  }
+}

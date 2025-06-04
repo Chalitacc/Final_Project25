@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Navbar.module.css";
 import Buttons from "../Buttons/Buttons";
 import { Link, NavLink, useNavigate } from "react-router-dom";
@@ -6,12 +6,13 @@ import { auth } from "../../../firebaseConfig";
 import { getAuthContext } from "../../context/authContext";
 import { signOut } from "firebase/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import SearchBar from "../SearchBar/SearchBar";
 
-const Navbar = () => {
+const Navbar = ({ children }) => {
   const { user } = getAuthContext();
   const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleSignOut = async () => {
     try {
@@ -24,28 +25,25 @@ const Navbar = () => {
   };
   return (
     <nav className={styles.navbar}>
-      <div>
+      <div className={styles.navContainer}>
         <div className={styles.title}>
-          <h1>Shelfie</h1>
+          <Link to="/book-main-page" className={styles.titleLink}>
+            <h1>Shelfie</h1>
+          </Link>
         </div>
-        <div className={styles.firstRow}>
+
+        <div className={styles.searchBarContainer}>{children}</div>
+
+        <div className={styles.burgerMenuAndSignIn}>
           {user ? (
             <>
-              <SearchBar></SearchBar>
-              <div className={styles.ButtonLinkGroup}>
+              <div className={styles.buttonLinkGroup}>
                 <Buttons
                   onClick={handleSignOut}
                   className={styles.signInButton}
                 >
                   Sign Out
                 </Buttons>
-                <Link to="profile" className={styles.profileButton}>
-                  {" "}
-                  <FontAwesomeIcon
-                    icon={faUser}
-                    className={styles.profileIcon}
-                  ></FontAwesomeIcon>
-                </Link>
               </div>
             </>
           ) : (
@@ -53,18 +51,31 @@ const Navbar = () => {
               Sing In
             </Link>
           )}
-        </div>
-        <div className={styles.secondRow}>
-          {user ? (
-            <NavLink to="/book-main-page" className={styles.navLink}>
-              Home
+
+          <button
+            className={styles.burger}
+            onClick={() => setMenuOpen((prev) => !prev)}
+          >
+            <FontAwesomeIcon
+              icon={menuOpen ? faTimes : faBars}
+            ></FontAwesomeIcon>
+          </button>
+          <div className={`${styles.menu} ${menuOpen ? styles.show : ""}`}>
+            {user ? (
+              <>
+                <NavLink to="/book-main-page" className={styles.navLink}>
+                  Home
+                </NavLink>
+                <NavLink to="/profile" className={styles.profileLink}>
+                  Profile
+                </NavLink>
+              </>
+            ) : null}
+
+            <NavLink to="/contact" className={styles.navLink}>
+              Contact
             </NavLink>
-          ) : (
-            ""
-          )}
-          <NavLink to="/contact" className={styles.navLink}>
-            Contact
-          </NavLink>
+          </div>
         </div>
       </div>
     </nav>

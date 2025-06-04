@@ -6,6 +6,7 @@
   align-items: center;
   background-color: var(--background-color-one);
   padding: var(--spacing-medium);
+  box-sizing: border-box;
 }
 
 .contactFormContainer {
@@ -34,7 +35,7 @@
 
 .userDetail div,
 .contactSection div {
-  flex-basis: 50%;
+  width: 100%;
 }
 
 .formInput {
@@ -69,7 +70,7 @@
 }
 
 .errorMessage {
-  color: white;
+  color: var(--error-color);
   padding-top: var(--spacing-x-small);
 }
 
@@ -77,4 +78,35 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-large);
+  max-width: 660px;
+  width: 90%;
+  max-height: 90vh;
+  overflow: auto;
+}
+
+@media (max-width: 480px) {
+  .formTitle {
+    font-size: var(--font-size-medium);
+  }
+  .contactForm {
+    padding: var(--spacing-small);
+  }
+  .contactFormContainer {
+    width: 100%;
+  }
+  .contactModalContainer {
+    max-height: 90vh;
+
+    padding: var(--spacing-small);
+  }
+  .contactModalContainer h2 {
+    font-size: var(--spacing-small);
+  }
+  .contactModalContainer p {
+    font-size: 0.95rem;
+  }
+  .closeModalButton {
+    font-size: 0.95rem;
+    width: 100%;
+  }
 }
