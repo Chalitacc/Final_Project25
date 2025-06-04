@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./Contact.module.css";
 import useConctactValidation from "../../hooks/useContactValidation";
 import Buttons from "../../Components/Buttons/Buttons";
-import { database } from "../../../firebaseConfig";
+import { database } from "../../firebaseConfig";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import Modal from "../../Components/Modal/Modal";
 

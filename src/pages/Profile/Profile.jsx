@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getAuthContext } from "../../context/authContext";
 import { collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
-import { auth, database } from "../../../firebaseConfig";
+import { auth, database } from "../../firebaseConfig";
 import styles from "./Profile.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";

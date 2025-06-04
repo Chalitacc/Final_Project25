@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./VerifyEmail.module.css";
 import { useNavigate } from "react-router-dom";
 import Buttons from "../../Components/Buttons/Buttons";
-import { auth } from "../../../firebaseConfig";
+import { auth } from "../../firebaseConfig";
 import { sendEmailVerification } from "firebase/auth";
 
 const VerifyEmail = () => {

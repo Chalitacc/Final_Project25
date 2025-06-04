@@ -51,3 +51,7 @@ This project is licensed under MIT license
 For this final project we could choose whatever we like. The project aims to showcase or skills from our two semesters on the Front end development class at Høyskole Kristiania. The key requirement was to develope it using component based React.
 
 ## 🛜 Live demo and Source code
+
+😺 Git hub:
+https://github.com/Chalitacc/Final_Project25
+💻 Netlify

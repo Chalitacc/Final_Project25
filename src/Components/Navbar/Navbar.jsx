@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./Navbar.module.css";
 import Buttons from "../Buttons/Buttons";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { auth } from "../../../firebaseConfig";
+import { auth } from "../../firebaseConfig";
 import { getAuthContext } from "../../context/authContext";
 import { signOut } from "firebase/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

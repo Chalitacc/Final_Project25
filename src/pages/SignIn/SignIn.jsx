@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./SignIn.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import Buttons from "../../Components/Buttons/Buttons";
@@ -7,7 +7,7 @@ import {
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { auth } from "../../../firebaseConfig";
+import { auth } from "../../firebaseConfig";
 import Modal from "../../Components/Modal/Modal";
 
 const SignIn = () => {

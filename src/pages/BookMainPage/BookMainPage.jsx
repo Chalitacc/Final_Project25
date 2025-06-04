@@ -8,7 +8,7 @@ import {
   getDocs,
   setDoc,
 } from "firebase/firestore";
-import { database } from "../../../firebaseConfig";
+import { database } from "../../firebaseConfig";
 import styles from "./BookMainPage.module.css";
 import Buttons from "../../Components/Buttons/Buttons";
 import { data, useNavigate } from "react-router-dom";

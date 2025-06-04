@@ -5,7 +5,7 @@ import { useSignUpValidation } from "../../hooks/useSignUpValidation";
 import { useAuth } from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { serverTimestamp, setDoc, doc } from "firebase/firestore";
-import { database } from "../../../firebaseConfig";
+import { database } from "../../firebaseConfig";
 
 const SignUp = () => {
   const [signUpFormData, setSignUpFormData] = useState({

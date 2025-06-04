@@ -3,7 +3,7 @@ import styles from "./BookDetails.module.css";
 import { useParams } from "react-router-dom";
 import { getAuthContext } from "../../context/authContext";
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { database } from "../../../firebaseConfig";
+import { database } from "../../firebaseConfig";
 import Buttons from "../../Components/Buttons/Buttons";
 import DOMPurify from "dompurify";
 
